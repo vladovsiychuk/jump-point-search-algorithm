@@ -98,8 +98,7 @@ func findSuccessors(currentNode *Node, endNode *Node, matrix [][]int) []*Node {
 		dx, dy := dir[0], dir[1]
 		sx, sy, forcedNeighborDir, found := jump(x, y, dx, dy, endNode, matrix)
 		if found {
-			successor := &Node{}
-			successor.Position = Position{X: sx, Y: sy}
+			successor := &Node{Position: Position{X: sx, Y: sy}}
 			successor.G = currentNode.G + heuristic(&currentNode.Position, &successor.Position)
 			successor.H = heuristic(&successor.Position, &endNode.Position)
 			successor.F = successor.G + successor.H
