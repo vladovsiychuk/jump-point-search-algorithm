@@ -102,7 +102,7 @@ jump(X, Y, DX, DY, EndNode, Matrix) returns X, Y, ForcedNeighnorDir, found
     return 0, 0, nil, false
 
 
-isValid(X, Y, Matrix)
+isWalkable(X, Y, Matrix)
 	return X >= 0 and Y >= 0 and x < Matrix.size and y < Matrix[0].size and Matrix[x][y]
 
 
