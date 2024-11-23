@@ -52,7 +52,7 @@ findSuccessors(CurrentNode, EndNode, Matrix)
 
 getDirections(Node)
     if Node.ParentDir == nil  // Starting node
-        return {{0, -1}, {0, 1}, {-1, 0}, {1, 0}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}} // All 8 directions
+        return [{0, -1}, {0, 1}, {-1, 0}, {1, 0}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}] // All 8 directions
 
     PDX, PDY = Node.ParentDir
     FNDX, FNDY = Node.ForcedNeighborDir
