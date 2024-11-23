@@ -1,5 +1,7 @@
-# Pseudo Code
+Implements the idea from https://zerowidth.com/2013/a-visual-explanation-of-jump-point-search/
 
+# Pseudo Code
+```
 Node {
     Position          // X, Y coordinates
     G, H, F           // Cost metrics: G (from start), H (heuristic to end), F (total cost)
@@ -107,4 +109,4 @@ isValid(X, Y, Matrix)
 func heuristic(A, B, Matrix) returns int 
 	// Using Manhattan distance as heuristic
 	return math.Abs(A.X-B.X) + math.Abs(A.Y-B.Y)
-
+```
