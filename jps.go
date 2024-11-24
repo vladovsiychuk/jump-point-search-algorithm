@@ -51,7 +51,9 @@ func heuristic(a, b *Position) int {
 	return int(math.Abs(float64(a.X-b.X)) + math.Abs(float64(a.Y-b.Y)))
 }
 
-func findPathWithJPS(startNode, endNode *Node, matrix [][]int) []*Node {
+func findPathWithJPS(start, end Position, matrix [][]int) []Position {
+	startNode := &Node{Position: start}
+	endNode := &Node{Position: end}
 	openList := &PriorityQueue{}
 	heap.Init(openList)
 	heap.Push(openList, startNode)
@@ -72,12 +74,12 @@ func findPathWithJPS(startNode, endNode *Node, matrix [][]int) []*Node {
 	return nil
 }
 
-func reconstructPath(node *Node) []*Node {
-	var path []*Node
+func reconstructPath(node *Node) []Position {
+	var path []Position
 
 	// Collect nodes from end to start
 	for node != nil {
-		path = append(path, node)
+		path = append(path, node.Position)
 		node = node.Parent
 	}
 
