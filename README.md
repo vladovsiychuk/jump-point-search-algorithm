@@ -37,7 +37,7 @@ findSuccessors(CurrentNode, EndNode, Matrix)
 
     for each Dir in getDirections(CurrentNode)  // Note: can be run in parallel
         DX, DY = Dir
-        SX, SY, ForcedNeighborDir, found = jump(X, Y, DX, DY, EndNode, Matrix)
+        SX, SY, ForcedNeighborDir, found = jump(X+DX, Y+DY, DX, DY, EndNode, Matrix)
         if found
             Successor = new Node()
             Successor.Position = {SX, SY}
