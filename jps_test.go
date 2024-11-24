@@ -2,34 +2,51 @@ package main
 
 import (
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestJumpPointSearch(t *testing.T) {
-	gridXY := [][]int{
-		{0, 1, 0},
-		{0, 1, 0},
-		{0, 0, 0},
+	tests := []struct {
+		name         string
+		gridXY       [][]int
+		start        Position
+		end          Position
+		expectedPath []Position
+	}{
+		{
+			name: "test 1",
+			gridXY: [][]int{
+				{0, 1, 0},
+				{0, 1, 0},
+				{0, 0, 0},
+			},
+			start: Position{X: 0, Y: 2},
+			end:   Position{X: 2, Y: 0},
+			expectedPath: []Position{
+				{X: 0, Y: 2},
+				{X: 1, Y: 2},
+				{X: 2, Y: 1},
+				{X: 2, Y: 0},
+			},
+		},
 	}
 
-	matrix := make([][]int, len(gridXY))
-	for y := 0; y < len(gridXY); y++ {
-		column := make([]int, len(gridXY[0]))
-		for x := 0; x < len(gridXY[y]); x++ {
-			column[x] = gridXY[x][y]
-		}
-		matrix[y] = column
-	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			// flip the grid to matrix
+			matrix := make([][]int, len(tt.gridXY))
+			for y := 0; y < len(tt.gridXY); y++ {
+				column := make([]int, len(tt.gridXY[0]))
+				for x := 0; x < len(tt.gridXY[y]); x++ {
+					column[x] = tt.gridXY[x][y]
+				}
+				matrix[y] = column
+			}
 
-	start := &Node{Position: Position{X: 0, Y: 2}}
-	end := &Node{Position: Position{X: 2, Y: 0}}
+			path := findPathWithJPS(tt.start, tt.end, matrix)
 
-	path := findPathWithJPS(start, end, matrix)
-
-	if len(path) == 0 {
-		t.Errorf("No path found from start (%d, %d) to end (%d, %d)", start.Position.X, start.Position.Y, end.Position.X, end.Position.Y)
-	}
-
-	for _, node := range path {
-		t.Logf("Node Position: (%d, %d)", node.Position.X, node.Position.Y)
+			assert.Equal(t, tt.expectedPath, path)
+		})
 	}
 }
