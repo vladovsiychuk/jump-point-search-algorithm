@@ -82,14 +82,14 @@ jump(X, Y, DX, DY, EndNode, Matrix) returns X, Y, ForcedNeighnorDir, found
                 return X, Y, nil, true
 
         // Horizontal movement: Check forced neighbors
-        if DX != 0
+        else if DX != 0
             if !isWalkable(X, Y - 1, Matrix) and isWalkable(X + DX, Y - 1, Matrix)
                 return X, Y, {DX, -1}, true
             if !isWalkable(X, Y + 1, Matrix) and isWalkable(X + DX, Y + 1, Matrix)
                 return X, Y, {DX, 1}, true
 
         // Vertical movement: Check forced neighbors
-        if DY != 0
+        else if DY != 0
             if !isWalkable(X - 1, Y, Matrix) and isWalkable(X - 1, Y + DY, Matrix)
                 return X, Y, {-1, DY}, true
             if !isWalkable(X + 1, Y, Matrix) and isWalkable(X + 1, Y + DY, Matrix)
