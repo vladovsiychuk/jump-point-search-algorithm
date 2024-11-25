@@ -1,6 +1,6 @@
 Implements the idea from https://zerowidth.com/2013/a-visual-explanation-of-jump-point-search/
 
-# Pseudo Code
+## Pseudo Code
 ```
 Node {
     Position          // X, Y coordinates
@@ -113,3 +113,10 @@ func heuristic(A, B, Matrix) returns int
 	// Using Manhattan distance as heuristic
 	return math.Abs(A.X-B.X) + math.Abs(A.Y-B.Y)
 ```
+
+## Running Tests
+1. Install Go with "brew install go" or https://go.dev/doc/install
+2. git clone https://github.com/vladovsiychuk/jump-point-search-algorithm
+3. cd jump-point-search-algorithm
+4. go mod tidy
+5. go test ./...
