@@ -147,6 +147,10 @@ func jump(x, y, dx, dy int, endNode *Node, matrix [][]int) (int, int, [2]int, bo
 		}
 
 		if dx != 0 && dy != 0 {
+			if !isWalkable(x-dx, y, matrix) && !isWalkable(x, y-dy, matrix) {
+				return 0, 0, [2]int{}, false
+			}
+
 			if !isWalkable(x, y+dy*-1, matrix) && isWalkable(x+dx, y+dy*-1, matrix) {
 				return x, y, [2]int{dx, dy * -1}, true
 			}

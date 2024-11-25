@@ -33,6 +33,17 @@ func TestJumpPointSearch(t *testing.T) {
 		{
 			name: "test 2",
 			gridXY: [][]int{
+				{0, 0, 0},
+				{1, 0, 0},
+				{0, 1, 0},
+			},
+			start:        Position{X: 0, Y: 2},
+			end:          Position{X: 2, Y: 0},
+			expectedPath: nil,
+		},
+		{
+			name: "test 3",
+			gridXY: [][]int{
 				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},

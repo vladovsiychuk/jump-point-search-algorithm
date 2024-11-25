@@ -69,6 +69,9 @@ jump(X, Y, DX, DY, EndNode, Matrix) returns X, Y, ForcedNeighnorDir, found
 
         // Diagonal movement: Check forced neighbors
         if DX != 0 and DY != 0
+            if !isWalkable(X-DX, Y, Matrix) && !isWalkable(X, Y-DY, Matrix)
+                return 0, 0, nil, false
+
             // Try to find the forced neighbor pattern for diagonal move as described in the article 
             if !isWalkable(X, Y+DY*-1, Matrix) and isWalkable(X+DX, Y+DY*-1, Matrix)
                 return X, Y, {DX, DY*-1}, true
